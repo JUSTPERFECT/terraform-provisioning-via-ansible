@@ -1,0 +1,8 @@
+---
+- name: Terraform Execution
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - import_role:
+        name: terraform

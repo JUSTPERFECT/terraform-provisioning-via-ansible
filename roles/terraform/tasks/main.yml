@@ -1,0 +1,11 @@
+---
+- include_tasks: default.yml
+  when: tf_backend_provider == "local"
+- include_tasks: aws-backend.yml
+  when: tf_backend_provider == "aws"
+- include_tasks: consul-backend.yml
+  when: tf_backend_provider == "consul"
+
+- name: Terraform execution results
+  debug:
+    var: output

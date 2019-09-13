@@ -1,0 +1,23 @@
+---
+- name: Running Terraform with S3 backend configuration
+  terraform:
+    project_path: "{{ app_dir }}/stack/"
+    binary_path: "{{ custom_terraform_binary_path | default(omit)}}"
+    lock: true
+    lock_timeout: 10
+    force_init: yes
+    backend_config:
+      region: "{{ s3_backend_bucket_region }}"
+      bukcet: "{{ s3_backend_bucket }}"
+      dynamodb_table: "{{ s3_backend_dynamodb_table }}"
+      key: "{{ environment }}/terraform.tfstate"
+    state: "{{ tf_action }}"
+    workspace: "{{ tf_workspace }}"
+    purge_workspace: "{{ (tf_action == 'absent') | ternary('yes','no') }}"
+    variables_file: "{{ app_dir }}/environments/{{ environment }}.tfvars"
+    variables:
+      application: "{{ application }}"
+      environment: "{{ environment }}"
+    targets: "{{ target_resource_name | default(omit) }}"
+    plan_file: "{{ (tf_action == 'planned') | ternary(plan_file_path,omit) }}"
+  register: output

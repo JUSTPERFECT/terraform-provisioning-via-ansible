@@ -1,0 +1,18 @@
+---
+- name: Running Terraform without backend configuration
+  terraform:
+    project_path: "{{ app_path }}/stack/"
+    binary_path: "{{ custom_terraform_binary_path | default(omit)}}"
+    lock: true
+    lock_timeout: 10
+    force_init: yes
+    state: "{{ tf_action }}"
+    workspace: "{{ tf_workspace }}"
+    purge_workspace: "{{ (tf_action == 'absent') | ternary('yes','no') }}"
+    variables_file: "{{ app_path }}/environments/{{ environment }}.tfvars"
+    variables:
+      application: "{{ application }}"
+      environment: "${{ environment }}"
+    targets: "{{ target_resource_name | default(omit) }}"
+    plan_file: "{{ (tf_action == 'planned') | ternary(plan_file_path,omit) }}"
+  register: output

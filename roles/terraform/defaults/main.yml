@@ -1,0 +1,18 @@
+---
+tf_backend_provider: local
+application: app1
+environment: dev
+tf_action: planned
+tf_workspace: default
+
+tf_dir: "{{ playbook_dir }}/terraform"
+app_dir: "{{ tf_dir }}/{{ application }}"
+plan_file_path: "{{ app_dir }}/stack/terraform.out"
+
+s3_backend_bucket_region: us-east-1
+s3_backend_bucket: i-will-create-s3-bucket-for-state
+s3_backend_dynamodb_table: lock_state
+
+consul_backend_server_address: demo.consul.io
+consul_backend_server_scheme: HTTPS
+consul_backend_kv_path: flux7/demo
