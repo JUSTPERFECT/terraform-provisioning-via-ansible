@@ -6,7 +6,7 @@ pipelineJob("terraform-execution-from-jenkins-via-ansible") {
             description('Select the application stack to build')
             choiceType('SINGLE_SELECT')
             groovyScript {
-                script('''return ['app1', 'app2']''')
+                script('''return ['app1','app2']''')
                 fallbackScript('')
             }
         }
@@ -56,7 +56,7 @@ pipelineJob("terraform-execution-from-jenkins-via-ansible") {
             groovyScript {
                 script('''
 				try {
-				def application= COMPONENT
+				def application= APPLICATION
 				def environment = ENVIRONMENT
 				def backend = TF_BACKEND_PROVIDER
 				def workspace = TF_WORKSPACE
