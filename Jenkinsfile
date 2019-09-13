@@ -46,7 +46,7 @@ pipeline {
                 }
 			}
 		}
-        stage('terraform apply') {
+        stage('terraform destroy') {
             when {
                 expression { params.TERRAFORM_ACTION == "destroy" }
             }
