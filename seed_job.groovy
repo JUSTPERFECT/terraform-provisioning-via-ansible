@@ -1,3 +1,5 @@
+def repo="https://github.com/JUSTPERFECT/terraform-provisioning-via-ansible.git"
+
 pipelineJob("terraform-execution-from-jenkins-via-ansible") {
 	parameters {
 		activeChoiceParam('APPLICATION') {
