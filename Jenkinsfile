@@ -6,12 +6,12 @@ pipeline {
                 echo 'Preparing environment for terraform execution'
                 script {
                     env.EXEC_PATH = "application/"
-                    if (params.TF_WORKSPACE == "plan") {
-						env.TF_WORKSPACE = "planned"
-					} else if (params.TF_WORKSPACE == "apply") {
-						env.TF_WORKSPACE = "present"
-					} else if (params.TF_WORKSPACE == "destroy"){
-						env.TF_WORKSPACE = "absent"
+                    if (params.TF_ACTION == "plan") {
+						env.TF_ACTION = "planned"
+					} else if (params.TF_ACTION == "apply") {
+						env.TF_ACTION = "present"
+					} else if (params.TF_ACTION == "destroy"){
+						env.TF_ACTION = "absent"
 					} else {
                         echo "Not a valid action"
                     }
