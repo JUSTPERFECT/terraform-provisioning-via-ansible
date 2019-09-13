@@ -54,40 +54,38 @@ pipelineJob("terraform-execution-from-jenkins-via-ansible") {
             description('Deployement Information')
             choiceType('FORMATTED_HTML')
             groovyScript {
-                script('''
-				try {
-				def application= APPLICATION
-				def environment = ENVIRONMENT
-				def backend = TF_BACKEND_PROVIDER
-				def workspace = TF_WORKSPACE
-				def action = TF_ACTION
-					data ="""
-					<html>
-						<body>
-							<table border = "1">
-								<tr>
-									<th>application</th>
-									<th>environment</th>
-									<th>backend provider</th>
-									<th>selected workspace</th>
-									<th>action</th>
-								</tr>
-								<tr>
-									<td>${application}</td>
-									<td>${environment}</td>
-									<td>${backend}</td>
-									<td>${workspace}</td>
-									<td>${action}</td>
-								</tr>      
-							</table>
-						</body>
-					</html>
-					"""
-				} catch (Exception e) {
-					println(e)
-				}
-				return data
-				''')
+                script('''try {
+def application= APPLICATION
+def environment = ENVIRONMENT
+def backend = TF_BACKEND_PROVIDER
+def workspace = TF_WORKSPACE
+def action = TF_ACTION
+	data ="""
+	<html>
+		<body>
+			<table border = "1">
+				<tr>
+					<th>application</th>
+					<th>environment</th>
+					<th>backend provider</th>
+					<th>selected workspace</th>
+					<th>action</th>
+				</tr>
+				<tr>
+					<td>${application}</td>
+					<td>${environment}</td>
+					<td>${backend}</td>
+					<td>${workspace}</td>
+					<td>${action}</td>
+				</tr>      
+			</table>
+		</body>
+	</html>
+	"""
+} catch (Exception e) {
+	println(e)
+}
+return data''')
             fallbackScript('')
             }
 			referencedParameter('APPLICATION')
