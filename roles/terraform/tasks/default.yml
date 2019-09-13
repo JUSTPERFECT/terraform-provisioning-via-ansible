@@ -1,7 +1,7 @@
 ---
 - name: Running Terraform without backend configuration
   terraform:
-    project_path: "{{ app_path }}/stack/"
+    project_path: "{{ app_dir }}/stack/"
     binary_path: "{{ custom_terraform_binary_path | default(omit)}}"
     lock: true
     lock_timeout: 10
