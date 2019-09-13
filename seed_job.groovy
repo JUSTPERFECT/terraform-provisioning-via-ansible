@@ -2,6 +2,7 @@ def repo="https://github.com/JUSTPERFECT/terraform-provisioning-via-ansible.git"
 
 pipelineJob("terraform-execution-from-jenkins-via-ansible") {
 	parameters {
+		stringParam('PIPELINE_BRANCH', 'master', 'branch to use for Jekinsfile')
 		activeChoiceParam('APPLICATION') {
             description('Select the application stack to build')
             choiceType('SINGLE_SELECT')
@@ -101,7 +102,7 @@ return data''')
 				git {
 					remote {
 						url(repo)
-						branches('$job_branch')
+						branches('$PIPELINE_BRANCH')
 						credentials('flux7')
 						extensions {
 							relativeTargetDirectory('artifacts')
