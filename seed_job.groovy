@@ -45,15 +45,12 @@ pipelineJob("terraform-execution-from-jenkins-via-ansible") {
                 fallbackScript('')
             }
         }
-		textParam('S3_BACKEND_OPTIONS', '''S3_BACKEND_BUCKET_REGION="<bucket_region>"
-		S3_BACKEND_BUCKET="<bucket_name>"
-		S3_BACKEND_DYNAMODB_TABLE="<dynamodb_table_name>"''', 's3 statefile bucket, region and dynamodb table for backend configuration. Only select incase of AWS backend')
-		stringParam('S3_BACKEND_BUCKET_REGION', 'default', 'select s3 state file bucket region in case of AWS backend')
-		stringParam('S3_BACKEND_BUCKET', 'default', 'select s3 state file bucket in case of AWS backend')
-		stringParam('S3_BACKEND_DYNAMODB_TABLE', 'default', 'select dynamodb table to lock state in case of AWS backend')
-		stringParam('CONSUL_BACKEND_SERVER_ADDRESS', 'default', 'select consul server address in case of consul backend')
-		stringParam('CONSUL_BACKEND_SERVER_SCHEME', 'default', 'select consul server protocol/scheme in case of consul backend')
-		stringParam('CONSUL_BACKEND_KV_PATH', 'default', 'select consul server kv store path in case of consul backend')
+		textParam('S3_BACKEND_OPTIONS', '''S3_BACKEND_BUCKET_REGION="<bucket_region_here>"
+S3_BACKEND_BUCKET="<bucket_name_here>"
+S3_BACKEND_DYNAMODB_TABLE="<dynamodb_table_name_here>"''', 's3 bucket, region and dynamodb table for statefile backend configuration. Only fill incase of AWS backend')
+		textParam('CONSUL_BACKEND_OPTIONS', '''CONSUL_BACKEND_SERVER_ADDRESS="<consul_server_address_here>"
+CONSUL_BACKEND_SERVER_SCHEME="<consul_server_scheme_here>"
+CONSUL_BACKEND_KV_PATH="<consul_kv_path_here>"''', 'consul server,scheme and key value path for statefile backend configuration. Only fill incase of consul backend')
         activeChoiceReactiveReferenceParam('DEPLOY_INFO') {
             description('Deployement Information')
             choiceType('FORMATTED_HTML')
