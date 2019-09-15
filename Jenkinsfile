@@ -24,7 +24,7 @@ pipeline {
                     dir("${WORKSPACE}/${env.EXEC_PATH}") {
                     echo 'terraform plan started'
                     sh """
-                    ansible-playbook site.yml -e tf_application=${params.APPLICATION} -e tf_environment=${params.ENVIRONMENT} -e tf_workspace=${params.TF_WORKSPACE} -e tf_action=planned -e tf_backend_provider=${params.TF_BACKEND_PROVIDER} -e s3_backend_bucket_region=${params.S3_BACKEND_BUCKET_REGION} -e s3_backend_bucket=${params.S3_BACKEND_BUCKET} -e s3_backend_dynamodb_table=${params.S3_BACKEND_DYNAMODB_TABLE} -e consul_backend_server_address=${params.CONSUL_BACKEND_SERVER_ADDRESS} -e consul_backend_server_scheme=${params.CONSUL_BACKEND_SERVER_SCHEME} -e consul_backend_kv_path=${params.CONSUL_BACKEND_KV_PATH} --check
+                    ansible-playbook site.yml -e tf_application=${params.APPLICATION} -e tf_environment=${params.ENVIRONMENT} -e tf_workspace=${params.TF_WORKSPACE} -e tf_action=planned -e tf_backend_provider=${params.TF_BACKEND_PROVIDER} -e s3_backend_bucket_region=${params.S3_BACKEND_BUCKET_REGION} -e s3_backend_bucket=${params.S3_BACKEND_BUCKET} -e s3_backend_dynamodb_table=${params.S3_BACKEND_DYNAMODB_TABLE} -e consul_backend_server_address=${params.CONSUL_BACKEND_SERVER_ADDRESS} -e consul_backend_server_scheme=${params.CONSUL_BACKEND_SERVER_SCHEME} -e consul_backend_kv_path=${params.CONSUL_BACKEND_KV_PATH}
                     """
                     }
                 }
