@@ -45,6 +45,9 @@ pipelineJob("terraform-execution-from-jenkins-via-ansible") {
                 fallbackScript('')
             }
         }
+		textParam('S3_BACKEND_OPTIONS', '''S3_BACKEND_BUCKET_REGION="<bucket_region>"
+		S3_BACKEND_BUCKET="<bucket_name>"
+		S3_BACKEND_DYNAMODB_TABLE="<dynamodb_table_name>"''', 's3 statefile bucket, region and dynamodb table for backend configuration. Only select incase of AWS backend')
 		stringParam('S3_BACKEND_BUCKET_REGION', 'default', 'select s3 state file bucket region in case of AWS backend')
 		stringParam('S3_BACKEND_BUCKET', 'default', 'select s3 state file bucket in case of AWS backend')
 		stringParam('S3_BACKEND_DYNAMODB_TABLE', 'default', 'select dynamodb table to lock state in case of AWS backend')
