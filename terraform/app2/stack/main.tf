@@ -2,6 +2,7 @@
 resource "docker_container" "docker" {
   image = "${docker_image.ubuntu.latest}"
   name  = "${var.application}-${var.environment}-flux-demo"
+  rm = true
 }
 
 resource "docker_image" "ubuntu" {
