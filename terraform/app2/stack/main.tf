@@ -5,5 +5,5 @@ resource "docker_container" "docker" {
 }
 
 resource "docker_image" "ubuntu" {
-  name = "ubuntu:${var.docker_image_version}"
+  name = "docker.io/ubuntu:${var.docker_image_version}"
 }
