@@ -1,10 +1,3 @@
-# Create a container
-# resource "docker_container" "docker" {
-#   image = "${docker_image.ubuntu.latest}"
-#   name  = "${var.application}-${var.environment}-flux-demo"
-#   rm = true
-# }
-                
 resource "docker_container" "nginx-server" {
   name =  "${var.application}-${var.environment}-flux-demo"
   image = "${docker_image.nginx.latest}"

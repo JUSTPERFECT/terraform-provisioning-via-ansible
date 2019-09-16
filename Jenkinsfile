@@ -15,6 +15,10 @@ pipeline {
 					} else {
                         echo "Not a valid action"
                     }
+                    def s3_backend = "${params.S3_BACKEND_OPTIONS}"
+                    s3_backend.splitEachLine('=') { option
+                        env.option[0] = option[1]
+                    }
                 }
             }
         }
