@@ -45,7 +45,7 @@ pipelineJob("terraform-execution-from-jenkins-via-ansible") {
                 fallbackScript('')
             }
         }
-		textParam('S3_BACKEND_OPTIONS', '''S3_BACKEND_BUCKET_REGION="us-east-1"
+		textParam('S3_BACKEND_OPTIONS', '''S3_BACKEND_BUCKET_REGION="ap-southeast-2"
 S3_BACKEND_BUCKET="terraform-state-bucket-flux7-demo"
 S3_BACKEND_DYNAMODB_TABLE="terraform-state-lock"''', 's3 bucket, region and dynamodb table for statefile backend configuration. Only fill incase of AWS backend')
 		textParam('CONSUL_BACKEND_OPTIONS', '''CONSUL_BACKEND_SERVER_ADDRESS="ec2-13-211-145-152.ap-southeast-2.compute.amazonaws.com:8500"
