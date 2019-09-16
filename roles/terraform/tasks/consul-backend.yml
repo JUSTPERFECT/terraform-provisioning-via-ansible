@@ -13,7 +13,7 @@
     state: "{{ tf_action }}"
     workspace: "{{ tf_workspace }}"
     purge_workspace: "{{ (tf_action == 'absent') | ternary('yes','no') }}"
-    variables_file: "{{ app_path }}/environments/{{ tf_environment }}.tfvars"
+    variables_file: "{{ app_dir }}/environments/{{ tf_environment }}.tfvars"
     variables:
       application: "{{ tf_application }}"
       environment: "{{ tf_environment }}"
