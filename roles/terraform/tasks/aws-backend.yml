@@ -8,7 +8,7 @@
     force_init: yes
     backend_config:
       region: "{{ s3_backend_bucket_region }}"
-      bukcet: "{{ s3_backend_bucket }}"
+      bucket: "{{ s3_backend_bucket }}"
       dynamodb_table: "{{ s3_backend_dynamodb_table }}"
       key: "{{ tf_environment }}/terraform.tfstate"
     state: "{{ tf_action }}"

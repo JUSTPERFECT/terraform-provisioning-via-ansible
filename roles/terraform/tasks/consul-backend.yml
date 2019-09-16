@@ -1,5 +1,5 @@
 ---
-- name: Running Terraform with S3 backend configuration
+- name: Running Terraform with consul backend configuration
   terraform:
     project_path: "{{ app_dir }}/stack/"
     binary_path: "{{ custom_terraform_binary_path | default(omit)}}"
