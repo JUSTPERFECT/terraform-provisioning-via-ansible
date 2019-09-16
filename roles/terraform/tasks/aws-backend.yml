@@ -16,7 +16,7 @@
     purge_workspace: "{{ (tf_action == 'absent') | ternary('yes','no') }}"
     variables_file: "{{ app_dir }}/environments/{{ tf_environment }}.tfvars"
     variables:
-      application: "{{ application }}"
+      application: "{{ tf_application }}"
       environment: "{{ tf_environment }}"
     targets: "{{ target_resource_name | default(omit) }}"
     plan_file: "{{ (tf_action == 'planned') | ternary(plan_file_path,omit) }}"
